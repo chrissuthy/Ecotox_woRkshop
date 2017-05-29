@@ -125,7 +125,7 @@ x <- 2:6
 x # by calling the name of stored object, we can print the value in the console too.
 x <- seq(2, 3, by=0.5) # seq() creates a sequence of numbers length the distance between arguments 1 and 2, the 'by=' argument designates the interval size.
 x
-x <- rep(1:2, times=) #rep() creates a repitition of numbers, the length of argument 1, "times=" argument tells us how many times it repeats.
+x <- rep(1:2, times=3) #rep() creates a repitition of numbers, the length of argument 1, "times=" argument tells us how many times it repeats.
 x
 x <- rep(1:2, each=3) #this rep() creates an object of each integer in the interval designated by the "each=" argument.
 x
@@ -160,9 +160,96 @@ swirl() # one more time and load R Programming, Lesson 6: Subsetting Vectors.
 
 ### More Functions: Importing Data
 
-#read.csv
+# Normally, we don't want to have to create our data by typing it into R.  
+# We probably already have a data file that we want to bring into R.
+
+# Normally, we would read in a *.csv or *.txt file with a function called
+# read.csv() or read.txt() respectively.  We will come back to these later
+# (especially if you brought your own data set with you), but first we will 
+# bring in some data from an online repository.
+
+install.packages("RCurl") # This install the necessary package to set a destination url 
+library(RCurl) #This loads the package
+loc<- getURL("https://raw.githubusercontent.com/chrissuthy/Ecotox_woRkshop/master/ecotox_survival.csv")
+# 'loc' is now an object we can use to load a file with
+data <- read.csv(text=loc)
+head(data) #examine the first 6 lines of data
+tail(data) #examine the last 6 lines of data
+str(data) # str() is a useful line of code that tells you about the data object
+summary(data) # summary() gives us some summary statistics for the data
+is.na(data) # tells you if each entry in the data frame is a NA value or not
+
+sum(is.na(data)) # This little line of code gives us the sum of TRUE values.
+# This would give us a quick insight into a large data set in the number of missing values
+# without having to go through each entry one-by-one.
+# Oh, yeah... you can call functions inside of functions.
 
 
-#pull data from git hub repository
+# Many R packages like data to be in a long format, where every individual data point
+# has its own row.  There are a couple functions that like a wide data format
 
-#import data, cbind names, get it set up for plotting
+# Once you have finished todays course, I suggest visiting
+# https://stanford.edu/~ejdemyr/r-tutorials/wide-and-long/
+# for a wonderful introduction to the differences between wide
+# and long data. Bonus: it's also an R exercise that shows a
+# tool (read package and function) to convert between the 2 
+# data formats. Cool, huh?!?
+
+### Exercise: Importing your data
+
+# Try to import your data set; remember the ?read.csv trick to get help if you 
+# need help figuring out how to use the function.  Once you have it in R, take a break!
+
+
+############# BREAK TIME ########### GO GET SOME COFFEE ################
+
+### Data manipulation
+
+# Alright, we have that data set in and we have taken a preliminary look at it.
+# But it seems that we have a column missing!
+# Let's try and add a column, but first we need to make the data!
+# We need it to be the same length as our 'data' frame.
+
+nrow(data) # tells us the # of rows in the data frame
+ncol(data) # and this tells us the # number of columns
+
+# If you remember from earlier we can create a vector of replicated numbers
+# With the rep() command.  Try to make a vector of length 48, of 1's and 2's
+# named "block" [should look like "1,2,1,2,1,2,.....].
+#
+#
+#
+#
+#
+# Don't cheat, work it out yourself...
+#
+#
+#
+#
+block <- rep(1:2, times=24) #confirm it's what you want with different exploration techniques
+#
+# Alright, now that we have it lets try and put it on the data frame 'data'.
+
+cbind(data, block) 
+
+# let's make sure that we have what we want
+
+ncol(data) # but this shows a data frame that is only 6 columns long still.
+
+# Can you figure out why?  We forgot to save the new object to an object. 
+# we can change the data object in R without changing the original file.
+# We can also assign the data object to the same name it already has
+
+data <- cbind(data, block)
+ncol(data)
+
+# Now we have the right number of columns that we want!
+# Let's move on to visualizing some of this data.
+
+### Visual Data Exploration - Plotting
+
+
+
+
+
+
