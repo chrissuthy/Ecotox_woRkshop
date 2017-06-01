@@ -248,7 +248,134 @@ ncol(data)
 
 ### Visual Data Exploration - Plotting
 
+### Visual Data Exploration - Plotting
 
+# We are going to teach two different ways to code
+# One is in base R plotting and the other is ggplot2
+# Both have strengths and weaknesses
+
+# First let's look at base R plotting
+# We already have a data set, but let's explore making some more!
+
+# We may need to simulate data to compare our data with
+# R has a handy collection of distributions we can draw from
+
+# Let's make a normal data set of 100 values with mean=0, sd=1
+rnorm(n=100, mean=0, sd=1)
+# Let's  store that to a variable named xnorm
+xnorm<-rnorm(n=100, mean=0, sd=1)
+# Let's see how our distrubtion looks using the hist() function
+hist(xnorm)
+# Great, that looks just about right.
+# rnorm is one of a family of normal distribution commands
+# type
+?rnorm # to learn more about it and the rest of the normal distribution commands
+# R has a batch of preloaded distributions you can use including the Poisson
+# So we all end up seeing the same outcomes from our random distributions
+# We can set a seed to end up with a replicable outcome!
+set.seed(2)
+
+# Let's try to creae a variable named xpois with n=100 and lambda=2
+#
+#
+#
+#
+#
+#
+ypois<-rpois(n=100, lambda = 2)
+# let's visualize it with a histogram
+hist(ypois)
+# Base R also has an option to create boxplots
+boxplot(ypois)
+# That looks a little messy, let's turn it on it side
+boxplot(ypois, horizontal = TRUE)
+#
+### plot()
+#
+# A more generic plotting command is plot()
+# This stands for scatterplot and is a very useful visualization tool
+# Let's plot something we are familiar with first to see what happens
+plot(x=xnorm, y=xnorm)
+# Well that's not very useful, but as you can see, when plotted against itself
+# we get a straight line.
+#
+# Let's make some data that make resemble 2 environmental variables
+# 1. Smuggness concentrations 
+smug<-rexp(100, rate=2) # exponential distribution
+# and 2. our knowledge of R, which is more uniformly distributed
+know<-rgamma(1:100, shape=1) # uniform distribution
+
+plot(know, smug)
+
+### Plot Arguments (you surely will argue with plots) 
+
+# You can change the labels, which R trues to figure out based on the data you
+# feed it, but it's not always pretty
+plot(know, smug, xlab="How much I know", ylab="How smug I am")
+# and we can add a main title
+plot(know, smug, xlab="How much I know", ylab="How smug I am", main="My Graph")
+# Well this is getting a bit unruly; It's possible to code like this
+plot(know, smug,
+     xlab="How much I know",
+     ylab="How smug I am",
+     main="My Graph",
+     sub="How ridiculous!" # and let's throw in a subtitle!
+     ) 
+# We can also change the shape with the pch= argument and
+# the color of the points with col= argument
+
+plot(know, smug,
+     xlab="How much I know",
+     ylab="How smug I am",
+     main="My Graph",
+     sub="How ridiculous!",
+     pch=2,
+     col="blue"
+     )
+
+### Graphical 'Par'ameters
+#
+# There a couple of useful graphical parameters that can be used to 
+# help display information, like if you want to put more than 1 graph in the
+# output
+par(mfrow=c(1,2)) # Remember that in R first comes rows then comes columns
+boxplot(ypois, horizontal = TRUE)
+hist(ypois)
+#
+# Just remember to put the graphical parameters back to the normal settings
+# when you are done!
+par(mfrow=c(1,1))
+# Sometimes we may want to add a vertical line to the plot
+#lets display the plot we made
+
+plot(know, smug,
+     xlab="How much I know",
+     ylab="How smug I am",
+     main="My Graph",
+     sub="How ridiculous!",
+     pch=2,
+     col="blue"
+)
+abline(h=1) # this gives us a horizontal line
+#
+# Let's try to save our work to an object
+
+myplot<- plot(know, smug,
+     xlab="How much I know",
+     ylab="How smug I am",
+     main="My Graph",
+     sub="How ridiculous!",
+     pch=2,
+     col="blue"
+)
+# And try to print it...
+myplot
+# And here we have found a big limitation to base R graphics
+# It isn't easy to save plots in base R for later use
+# instead we have to rerun the whole plot code, which can be annoying
+# There are other ways to plot though that don't have this limitation
+
+### Brings us to ggplot2
 
 
 
