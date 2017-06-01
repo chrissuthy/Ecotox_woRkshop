@@ -1,70 +1,69 @@
-######IntRo Workshop#######
-###June 14, 2017###
-###UMass Amherst###
-###Presented by Blake Massey, Joe Drake, & Dr. Chris Sutherland###
+###### IntRo Workshop #######
+### June 14, 2017 ###
+### UMass Amherst ###
+### Presented by Blake Massey, Joe Drake, & Dr. Chris Sutherland ###
 
 
-####Welcome to the R World!######
+#### Welcome to the R World! ######
 
-########Lesson 1: Intro########### 
+######## Lesson 1: Intro ########### 
 
-#Here you are, sitting in the R programming environment and RStudio Script Window
-#Below you (or possibly above), you have your console  
+# Here you are, sitting in the R programming environment and RStudio Script Window
+# Below you (or possibly above), you have your console  
 
-#Try typing into the console, "Hello World!"
-#What happens?
+# Try typing into the console, "Hello World!"
+# What happens?
 
-#You get an error? Why? Because you don't know what's going on yet!
+# You get an error? Why? Because you don't know what's going on yet!
 
-#That's why you are here, so....
+# That's why you are here, so....
 
-#Lets get started!
+# Lets get started!
 
-#Your working directory is where all of the work you are doing is gets stored...
-#Think about it as a folder where you want to save your work, and where things are stored
-#R has a default directory, but you don't want to save keep everything there
-#Otherwise it could get pretty messy in there.  Let's find out where our directory is now.
+# Your working directory is where all of the work you are doing is gets stored...
+# Think about it as a folder where you want to save your work, and where things are stored
+# R has a default directory, but you don't want to save keep everything there
+# Otherwise it could get pretty messy in there.  Let's find out where our directory is now.
 
-#Type:
+# Type:
 
-getwd() #This tells you where your working directory is...
+getwd() # This tells you where your working directory is...
 
-#into your console.  But we don't want to work there. 
-#Hopefully you have a folder this R file is already sitting in. 
-#Find the directory you put it in.
-#If you copy and paste the directory path from Windows Explorer, make sure to reverse the slashes or double them.
-#Each's just an R thing (you'll find there are alot of them).
+# into your console.  But we don't want to work there. 
+# Hopefully you have a folder this R file is already sitting in. 
+# Find the directory you put it in.
+# If you copy and paste the directory path from Windows Explorer, make sure to reverse the slashes or double them.
+# Each's just an R thing (you'll find there are alot of them).
 
-#Try typing:
+# Try typing:
 
-setwd("[Copy/Paste dir here and edit as needed]") #charater strings often need to be couched in ""
-#Mac: "/" vs. Windows: "\\" 
-#setwd(choose.dir()) #shortcut method with a popup menu 
+setwd("C:\\Users\\Joseph Drake\\Dropbox\\Spring2017\\R_Ecotox") # charater strings often need to be couched in ""
+# setwd(choose.dir()) # shortcut method with a popup menu 
 
-getwd() #use it again to confirm you successfully changed your working directory
+getwd() # use it again to confirm you successfully changed your working directory
 
-#There are a lot of things that R can do by itself, but one of it's strengths 
-#is its opensource nature and the development that occurs to create "packages"
+# There are a lot of things that R can do by itself, but one of it's strengths 
+# is its opensource nature and the development that occurs to create "packages"
 
-#Let's load a package called "swirl"
+# Let's load a package called "swirl"
 
-install.packages("swirl")  #this installs package into your computer
-library(swirl)  #this loads it into your workspace, so you can use it 
+install.packages("swirl")  # this installs package into your computer
+library(swirl)  # this loads it into your workspace, so you can use it 
 
-#Below is a function in the package swirl.  Try typing it in, pressing enter, and I will see you on the other side
+# Below is a function in the package swirl.  Try typing it in, pressing enter, and I will see you on the other side
 
 swirl() # enter your name, follow directions, and select R Programming, Lesson 1: Basic Building blocks
 
-#Type 'bye()' into the console if you need to leave swirl early
+# Type 'bye()' into the console if you need to leave swirl early
 
-#That is swirl, a great way to reinforce what we learn today!
-#I suggest going through each of the lessons when you get home!
+# That is swirl, a great way to reinforce what we learn today!
+# We suggest going through each of the lessons when you get home!
 
-#Now to take the training wheels off!
+# Now to take the training wheels off!
 
-#Let's start learning more about R
+# Let's start learning more about R
 
-###Basic Operator Examples
+### Basic Operator Examples
 
 5+7 # R can be a simple calculator...
 
@@ -76,65 +75,59 @@ x^2 # Such as exponentiation.
 
 ### Basic Function Examples
 
-#Sometimes we need to combine a series of numbers to do what we want
+# Sometimes we need to combine a series of numbers to do what we want
 
 y<-c(5, x, x^2) # c() this is the "concatenate" function that combines values into a list 
 
 print(y) # and this function prints the values of an object.
 
-#and as we saw at the beginning, the function setwd() allows us to control where our work space is set.
+class(y) # tells us the clas of the stored object
 
 ### Data classes
 
-#integer
-
-#double
-
-#logical
-
-#character
-
-#complex
+# integer = whole numbers
+# double AKA Numeric= "real" numbers 
+# logical = TRUE/FALSE
+# character = string of characters AKA words
+# complex = combination of different data classes
 
 ### Atomic Vectors
 
 # Atomic vectors are a sequence of elements of the same data type
+# assign each of the variables to the value y and check to make sure it's 
+# the class we claim it is
 
-#integer
-
+# integer
 c(1, 2, 5, 8, 192)
 
-#double
-
+# numeric
 c(1.4, 3.15, 17.082)
 
-#logical
-
+# logical
 c(TRUE, FALSE, FALSE, TRUE, TRUE)
 
-#character
-
+# character
 c("Amherst", "Site 27", "Ephemeroptera")
 
 
 ### Creating Objects pt 1: vectors
 
-x <- c(2, 4, 6) #c() combines these values to create a vector of integers
+x <- c(2, 4, 6) # c() combines these values to create a vector of integers
 print(x) # print() prints the values stored in the object called
 x <- 2:6
 x # by calling the name of stored object, we can print the value in the console too.
 x <- seq(2, 3, by=0.5) # seq() creates a sequence of numbers length the distance between arguments 1 and 2, the 'by=' argument designates the interval size.
 x
-x <- rep(1:2, times=3) #rep() creates a repitition of numbers, the length of argument 1, "times=" argument tells us how many times it repeats.
+x <- rep(1:2, times=3) # rep() creates a repitition of numbers, the length of argument 1, "times=" argument tells us how many times it repeats.
 x
-x <- rep(1:2, each=3) #this rep() creates an object of each integer in the interval designated by the "each=" argument.
+x <- rep(1:2, each=3) # this rep() creates an object of each integer in the interval designated by the "each=" argument.
 x
 
-#Let's practice with swirl() again; remember to type: 
+# Let's practice with swirl() again; remember to type: 
 
 swirl() # to get it started up.  This time we will select R Programming lesson 3: Sequence of Numbers
 
-#Type 'bye()' into the console if you need to leave swirl early or when you are finished
+# Type 'bye()' into the console if you need to leave swirl early or when you are finished
 
 ### Creating objects pt 2: Matrices, Dataframes, and lists
 
@@ -155,7 +148,7 @@ class(lt) # check to make sure it is a list
 
 swirl() # one more time and load R Programming, Lesson 6: Subsetting Vectors.
 
-#Type 'bye()' into the console if you need to leave swirl early or when you are finished
+# Type 'bye()' into the console if you need to leave swirl early or when you are finished
 
 
 ### More Functions: Importing Data
@@ -169,25 +162,32 @@ swirl() # one more time and load R Programming, Lesson 6: Subsetting Vectors.
 # bring in some data from an online repository.
 
 install.packages("RCurl") # This install the necessary package to set a destination url 
-library(RCurl) #This loads the package
+library(RCurl) # This loads the package
 loc<- getURL("https://raw.githubusercontent.com/chrissuthy/Ecotox_woRkshop/master/ecotox_survival.csv")
 # 'loc' is now an object we can use to load a file with
 data <- read.csv(text=loc)
-head(data) #examine the first 6 lines of data
-tail(data) #examine the last 6 lines of data
+head(data) # examine the first 6 lines of data
+tail(data) # examine the last 6 lines of data
 str(data) # str() is a useful line of code that tells you about the data object
+dim(data)
 summary(data) # summary() gives us some summary statistics for the data
 is.na(data) # tells you if each entry in the data frame is a NA value or not
-
 sum(is.na(data)) # This little line of code gives us the sum of TRUE values.
 # This would give us a quick insight into a large data set in the number of missing values
 # without having to go through each entry one-by-one.
 # Oh, yeah... you can call functions inside of functions.
 
-
+# Read in the data at loc2 below and store it as data2 (hint we  loc2 ) below and explore it using some of the commands presented
+loc2<- getURL("https://raw.githubusercontent.com/chrissuthy/Ecotox_woRkshop/master/df.csv")
+# 
+#
+#
+#
+#
+data2 <- read.csv(text=loc2) # incase you needed it; don't forget to explore it a bit
+#
 # Many R packages like data to be in a long format, where every individual data point
 # has its own row.  There are a couple functions that like a wide data format
-
 # Once you have finished todays course, I suggest visiting
 # https://stanford.edu/~ejdemyr/r-tutorials/wide-and-long/
 # for a wonderful introduction to the differences between wide
@@ -198,7 +198,8 @@ sum(is.na(data)) # This little line of code gives us the sum of TRUE values.
 ### Exercise: Importing your data
 
 # Try to import your data set; remember the ?read.csv trick to get help if you 
-# need help figuring out how to use the function.  Once you have it in R, take a break!
+# need help figuring out how to use the function.  It will be a little different
+# than what you have seen so far. Once you have it in R, take a break!
 
 
 ############# BREAK TIME ########### GO GET SOME COFFEE ################
@@ -226,7 +227,7 @@ ncol(data) # and this tells us the # number of columns
 #
 #
 #
-block <- rep(1:2, times=24) #confirm it's what you want with different exploration techniques
+block <- rep(1:2, times=24) # confirm it's what you want with different exploration techniques
 #
 # Alright, now that we have it lets try and put it on the data frame 'data'.
 
@@ -245,8 +246,6 @@ ncol(data)
 
 # Now we have the right number of columns that we want!
 # Let's move on to visualizing some of this data.
-
-### Visual Data Exploration - Plotting
 
 ### Visual Data Exploration - Plotting
 
@@ -297,41 +296,54 @@ boxplot(ypois, horizontal = TRUE)
 # Let's plot something we are familiar with first to see what happens
 plot(x=xnorm, y=xnorm)
 # Well that's not very useful, but as you can see, when plotted against itself
-# we get a straight line.
+# we get a straight line. Because that's what should happen.
 #
-# Let's make some data that make resemble 2 environmental variables
-# 1. Smuggness concentrations 
-smug<-rexp(100, rate=2) # exponential distribution
-# and 2. our knowledge of R, which is more uniformly distributed
-know<-rgamma(1:100, shape=1) # uniform distribution
-
-plot(know, smug)
+# Let's use some data that make resemble environmental variables
+# Remember that we imported a dataset we called data2
+# Let's remind ourselves what that is
+str(data2)
+head(data2)
+summary(data2)
+# Looks like we have a data frame with 4 columns with the following columns
+    # X= id
+    # phytochem= represent consentration of bad chem
+    # farm= the amount of farm pasture around our sampling sit
+    # rare= an indicator that is at high abundance when our sample area is healthy
+# Lets plot some of these so we can 
+# Remember we can index/subset the data we wish to use using the $ operator
+plot(x=data2$phytochem, y=data2$farm)
+plot(x=data2$phytochem, y=data2$rare)
+plot(x=data2$farm, y=data2$rare)
+# Something different will happen if you feed plot() a dataset name 
+# that has more than 2 variables.....
+plot(data2)
+# Isn't that cool!
 
 ### Plot Arguments (you surely will argue with plots) 
 
 # You can change the labels, which R trues to figure out based on the data you
 # feed it, but it's not always pretty
-plot(know, smug, xlab="How much I know", ylab="How smug I am")
+plot(data2$farm, data2$rare, xlab="Amount of Farm Near Sample Site", ylab="Indicator")
 # and we can add a main title
-plot(know, smug, xlab="How much I know", ylab="How smug I am", main="My Graph")
+plot(data2$farm, data2$rare, xlab="Amount of Farm Near Sample Site", ylab="Indicator", main="Impacts")
 # Well this is getting a bit unruly; It's possible to code like this
-plot(know, smug,
-     xlab="How much I know",
-     ylab="How smug I am",
-     main="My Graph",
-     sub="How ridiculous!" # and let's throw in a subtitle!
+plot(data2$farm, data2$rare,
+     xlab="Amount of Farm Near Sample Site",
+     ylab="Indicator",
+     main="Impacts",
+     sub="How Convenient!" # and let's throw in a subtitle!
      ) 
 # We can also change the shape with the pch= argument and
 # the color of the points with col= argument
 
-plot(know, smug,
-     xlab="How much I know",
-     ylab="How smug I am",
-     main="My Graph",
-     sub="How ridiculous!",
+plot(data2$farm, data2$rare,
+     xlab="Amount of Farm Near Sample Site",
+     ylab="Indicator",
+     main="Impacts",
+     sub="How Convenient!",
      pch=2,
      col="blue"
-     )
+      )
 
 ### Graphical 'Par'ameters
 #
@@ -342,32 +354,33 @@ par(mfrow=c(1,2)) # Remember that in R first comes rows then comes columns
 boxplot(ypois, horizontal = TRUE)
 hist(ypois)
 #
+
 # Just remember to put the graphical parameters back to the normal settings
 # when you are done!
 par(mfrow=c(1,1))
 # Sometimes we may want to add a vertical line to the plot
-#lets display the plot we made
+# lets display the plot we made
 
-plot(know, smug,
-     xlab="How much I know",
-     ylab="How smug I am",
-     main="My Graph",
-     sub="How ridiculous!",
+plot(data2$farm, data2$rare,
+     xlab="Amount of Farm Near Sample Site",
+     ylab="Indicator",
+     main="Impacts",
+     sub="How Convenient!",
      pch=2,
      col="blue"
 )
-abline(h=1) # this gives us a horizontal line
+abline(h=20) # this gives us a horizontal line
 #
 # Let's try to save our work to an object
 
-myplot<- plot(know, smug,
-     xlab="How much I know",
-     ylab="How smug I am",
-     main="My Graph",
-     sub="How ridiculous!",
-     pch=2,
-     col="blue"
-)
+myplot<- plot(data2$farm, data2$rare,
+              xlab="Amount of Farm Near Sample Site",
+              ylab="Indicator",
+              main="Impacts",
+              sub="How Convenient!",
+              pch=2,
+              col="blue"
+              )
 # And try to print it...
 myplot
 # And here we have found a big limitation to base R graphics
@@ -376,7 +389,5 @@ myplot
 # There are other ways to plot though that don't have this limitation
 
 ### Brings us to ggplot2
-
-
 
 
