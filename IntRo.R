@@ -27,17 +27,19 @@
 
 # Type:
 
-getwd() # This tells you where your working directory is...
+getwd() # (This tells you where your working directory is...)
 
 # into your console.  But we don't want to work there. 
 # Hopefully you have a folder this R file is already sitting in. 
 # Find the directory you put it in.
-# If you copy and paste the directory path from Windows Explorer, make sure to reverse the slashes or double them.
+# If you copy and paste the directory path from Windows Explorer, make sure to 
+# reverse the slashes or double them.
 # Each's just an R thing (you'll find there are alot of them).
 
 # Try typing:
 
-setwd("C:\\Users\\Joseph Drake\\Dropbox\\Spring2017\\R_Ecotox") # charater strings often need to be couched in ""
+setwd("C:\\Users\\Joseph Drake\\Dropbox\\Spring2017\\R_Ecotox") 
+# charater strings often need to be couched in ""
 # setwd(choose.dir()) # shortcut method with a popup menu 
 
 getwd() # use it again to confirm you successfully changed your working directory
@@ -50,11 +52,13 @@ getwd() # use it again to confirm you successfully changed your working director
 install.packages("swirl")  # this installs package into your computer
 library(swirl)  # this loads it into your workspace, so you can use it 
 
-# Below is a function in the package swirl.  Try typing it in, pressing enter, and I will see you on the other side
+# Below is a function in the package swirl.  Try typing it in, pressing enter...
+# and I will see you on the other side
 
-swirl() # enter your name, follow directions, and select R Programming, Lesson 1: Basic Building blocks
+swirl() # enter your name, follow directions, and select R Programming, 
+# Lesson 1: Basic Building blocks
 
-# Type 'bye()' into the console if you need to leave swirl early
+# Type 'bye()' into the console if you need to leave swirl early or are done.
 
 # That is swirl, a great way to reinforce what we learn today!
 # We suggest going through each of the lessons when you get home!
@@ -62,6 +66,8 @@ swirl() # enter your name, follow directions, and select R Programming, Lesson 1
 # Now to take the training wheels off!
 
 # Let's start learning more about R
+
+######## Lesson 2: Operators, Functions, Classes, and Vectors ###########
 
 ### Basic Operator Examples
 
@@ -109,37 +115,55 @@ c(TRUE, FALSE, FALSE, TRUE, TRUE)
 # character
 c("Amherst", "Site 27", "Ephemeroptera")
 
+######## Lesson 3: Objects ###########
 
-### Creating Objects pt 1: vectors
+### Creating Objects Part 1: Vectors ###
 
 x <- c(2, 4, 6) # c() combines these values to create a vector of integers
 print(x) # print() prints the values stored in the object called
 x <- 2:6
 x # by calling the name of stored object, we can print the value in the console too.
-x <- seq(2, 3, by=0.5) # seq() creates a sequence of numbers length the distance between arguments 1 and 2, the 'by=' argument designates the interval size.
+x <- seq(2, 3, by=0.5) # seq() creates a sequence of numbers length the distance 
+# between arguments 1 and 2, the 'by=' argument designates the interval size.
 x
-x <- rep(1:2, times=3) # rep() creates a repitition of numbers, the length of argument 1, "times=" argument tells us how many times it repeats.
+x <- rep(1:2, times=3) # rep() creates a repitition of numbers, the length of 
+# argument 1, "times=" argument tells us how many times it repeats.
 x
-x <- rep(1:2, each=3) # this rep() creates an object of each integer in the interval designated by the "each=" argument.
+x <- rep(1:2, each=3) # this rep() creates an object of each integer in the 
+# interval designated by the "each=" argument.
 x
 
 # Let's practice with swirl() again; remember to type: 
 
-swirl() # to get it started up.  This time we will select R Programming lesson 3: Sequence of Numbers
+swirl() # to get it started up.  This time we will select R Programming 
+# Lesson 3: Sequence of Numbers
 
 # Type 'bye()' into the console if you need to leave swirl early or when you are finished
 
-### Creating objects pt 2: Matrices, Dataframes, and lists
+
+### Creating objects Part 2: Matrices, Dataframes, and Lists ###
 
 mt <- matrix(1:9, nrow = 3) # matrices are 'tables' of numbers of a single type
 
-df <- data.frame(x = 1:3, y = c('a', 'b', 'c')) # data frames can be tables of multiple data types.
+df <- data.frame(x = 1:3, y = c('a', 'b', 'c')) 
+# data frames can be tables of multiple data types and are very commonly used.
 
-lt <- list(1:3, "a", c(TRUE, FALSE, TRUE), c(2.3, 5.9))
+lt <- list(1:3, "a", c(TRUE, FALSE, TRUE), c(2.3, 5.9)) # lists can store multiple types
 
 class(lt) # check to make sure it is a list
 
-### Subsetting and indexing data
+# All objects have metadata about them, and class() is one of the functions that
+# can help us to get data about our data others include:
+
+names(lt) # we get a null because it has no names
+
+dim(df) # gives us the dimesion of the object
+
+# factor() gives us the categorical variables 
+
+# levels() gives us the set of allowed values
+
+### Subsetting and Indexing Data ###
 
 # Sometimes we will only want to use a subset of our data objects for any given project or calculation.
 # We will need to start with vectors.
@@ -151,7 +175,18 @@ swirl() # one more time and load R Programming, Lesson 6: Subsetting Vectors.
 # Type 'bye()' into the console if you need to leave swirl early or when you are finished
 
 
-### More Functions: Importing Data
+
+### Logical Indexing ###
+
+
+### Getting Help in R ###
+
+
+############# BREAK TIME ########### GO GET SOME COFFEE ################
+
+######## Lesson 4: Imports & Exploration ###########
+
+### More Functions: Importing Data ###
 
 # Normally, we don't want to have to create our data by typing it into R.  
 # We probably already have a data file that we want to bring into R.
@@ -195,14 +230,16 @@ data2 <- read.csv(text=loc2) # incase you needed it; don't forget to explore it 
 # tool (read package and function) to convert between the 2 
 # data formats. Cool, huh?!?
 
-### Exercise: Importing your data
+### Exercise: Importing your data ###
 
 # Try to import your data set; remember the ?read.csv trick to get help if you 
 # need help figuring out how to use the function.  It will be a little different
 # than what you have seen so far. Once you have it in R, take a break!
 
 
-############# BREAK TIME ########### GO GET SOME COFFEE ################
+
+
+######## Lesson 5: Manipulation ###########
 
 ### Data manipulation
 
@@ -247,7 +284,9 @@ ncol(data)
 # Now we have the right number of columns that we want!
 # Let's move on to visualizing some of this data.
 
-### Visual Data Exploration - Plotting
+######## Lesson 6: Visualization ###########
+
+### Visual Data Exploration - Plotting ###
 
 # We are going to teach two different ways to code
 # One is in base R plotting and the other is ggplot2
@@ -319,7 +358,7 @@ plot(x=data2$farm, y=data2$rare)
 plot(data2)
 # Isn't that cool!
 
-### Plot Arguments (you surely will argue with plots) 
+### Plot Arguments (you surely will argue with plots)  ###
 
 # You can change the labels, which R trues to figure out based on the data you
 # feed it, but it's not always pretty
@@ -388,6 +427,9 @@ myplot
 # instead we have to rerun the whole plot code, which can be annoying
 # There are other ways to plot though that don't have this limitation
 
-### Brings us to ggplot2
+######## Lesson 7: Visualization 2 ###########
+
+### ggplot2 ###
 
 
+######## Lesson 8: Linear Modeling/ANOVA ###########
